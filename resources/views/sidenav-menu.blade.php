@@ -1,5 +1,3 @@
-<!-- resources/views/sidenav-menu.blade.php -->
-
 <div class="flex">
     <!-- Sidebar -->
     <aside class="w-64 bg-white dark:bg-gray-900 shadow-lg h-screen p-6 border-r border-gray-200 dark:border-gray-700 transition-all duration-300">
@@ -11,43 +9,45 @@
                 <i class="fas fa-chevron-right ml-auto text-xs text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
+            <!-- Attendance -->
             <a href="{{ route('attendance.index') }}" class="flex items-center group space-x-4 text-gray-800 dark:text-gray-200 hover:text-green-500 dark:hover:text-green-400 transition-all duration-200 px-4 py-3 rounded-md hover:bg-green-50 dark:hover:bg-gray-800 hover:shadow-sm">
-                <i class="fas fa-tractor text-green-500 text-xl transform group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium ml-3 group-hover:font-semibold">jackass</span>
+                <i class="fas fa-calendar-check text-green-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium ml-3 group-hover:font-semibold">Attendance</span>
                 <i class="fas fa-chevron-right ml-auto text-xs text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
-            
+            <!-- Courses -->
             <a href="{{ route('courses.index') }}" class="flex items-center group space-x-4 text-gray-800 dark:text-gray-200 hover:text-purple-500 dark:hover:text-purple-400 transition-all duration-200 px-4 py-3 rounded-md hover:bg-purple-50 dark:hover:bg-gray-800 hover:shadow-sm">
-                <i class="fas fa-calendar-alt text-purple-500 text-xl transform group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium ml-3 group-hover:font-semibold">jackass</span>
+                <i class="fas fa-book text-purple-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium ml-3 group-hover:font-semibold">Courses</span>
                 <i class="fas fa-chevron-right ml-auto text-xs text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
-            
+            <!-- Grades -->
             <a href="{{ route('grades.index') }}" class="flex items-center group space-x-4 text-gray-800 dark:text-gray-200 hover:text-amber-500 dark:hover:text-amber-400 transition-all duration-200 px-4 py-3 rounded-md hover:bg-amber-50 dark:hover:bg-gray-800 hover:shadow-sm">
-                <i class="fas fa-warehouse text-amber-500 text-xl transform group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium ml-3 group-hover:font-semibold">jackass</span>
+                <i class="fas fa-clipboard-list text-amber-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium ml-3 group-hover:font-semibold">Grades</span>
                 <i class="fas fa-chevron-right ml-auto text-xs text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
-           
+            <!-- Messages -->
             <a href="{{ route('messages.index') }}" class="flex items-center group space-x-4 text-gray-800 dark:text-gray-200 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all duration-200 px-4 py-3 rounded-md hover:bg-emerald-50 dark:hover:bg-gray-800 hover:shadow-sm">
-                <i class="fas fa-chart-line text-emerald-500 text-xl transform group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium ml-3 group-hover:font-semibold">jackass</span></span>
+                <i class="fas fa-comment-alt text-emerald-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium ml-3 group-hover:font-semibold">Messages</span>
                 <i class="fas fa-chevron-right ml-auto text-xs text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
-           
+            <!-- ParentsInfo -->
             <a href="{{ route('parentsinfo.index') }}" class="flex items-center group space-x-4 text-gray-800 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 transition-all duration-200 px-4 py-3 rounded-md hover:bg-indigo-50 dark:hover:bg-gray-800 hover:shadow-sm">
-                <i class="fas fa-users text-indigo-500 text-xl transform group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium ml-3 group-hover:font-semibold">jackass</span>
+                <i class="fas fa-user-friends text-indigo-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium ml-3 group-hover:font-semibold">ParentsInfo</span>
                 <i class="fas fa-chevron-right ml-auto text-xs text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
+            <!-- StudentInfo -->
             <a href="{{ route('studentinfo.index') }}" class="flex items-center group space-x-4 text-gray-800 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 transition-all duration-200 px-4 py-3 rounded-md hover:bg-indigo-50 dark:hover:bg-gray-800 hover:shadow-sm">
-                <i class="fas fa-users text-indigo-500 text-xl transform group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium ml-3 group-hover:font-semibold">jackass</span>
+                <i class="fas fa-user-graduate text-indigo-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium ml-3 group-hover:font-semibold">StudentInfo</span>
                 <i class="fas fa-chevron-right ml-auto text-xs text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
