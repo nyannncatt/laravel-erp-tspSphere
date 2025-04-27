@@ -82,6 +82,14 @@
                 <i class="fas fa-chevron-right ml-auto text-xs text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
+            <a href="{{ route('feedback.index') }}"
+   class="flex items-center group space-x-4 px-4 py-3 rounded-md hover:bg-pink-50 dark:hover:bg-gray-800 hover:shadow-sm transition-all duration-200
+   {{ Request::is('feedback*') ? 'active-link' : 'text-gray-800 dark:text-gray-200 hover:text-pink-500 dark:hover:text-pink-400' }}">
+    <i class="fas fa-comment-dots text-pink-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+    <span class="font-medium ml-3 group-hover:font-semibold">Submit a Feedback</span>
+    <i class="fas fa-chevron-right ml-auto text-xs text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+             </a>
+
             <!-- Logout -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
