@@ -35,6 +35,10 @@ Route::get('/studentinfo', [studentinfocontroller::class, 'index'])->name('stude
 Route::get('/feedback', [feedbackcontroller::class, 'index'])->name('feedback.index');
 
 //admin/crud -> announcements board
-
 Route::resource('admin/announcements', announcementsController::class)->except(['create', 'edit', 'show']);
+
+//admin/crud -> attendance
 Route::resource('attendance', attendancecontroller::class);
+
+//admin/crud -> courses
+Route::resource('courses', coursescontroller::class)->except(['create', 'edit', 'show']);
