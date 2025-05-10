@@ -51,3 +51,7 @@ Route::resource('messages', messagescontroller::class);
 
 //admin/crud -> parentsinfo
 Route::resource('parents', parentsinfocontroller::class);
+
+//admin/crud -> studentinfo
+Route::resource('studentinfo', studentinfocontroller::class);
+
