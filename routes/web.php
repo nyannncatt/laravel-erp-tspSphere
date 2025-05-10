@@ -45,3 +45,6 @@ Route::resource('courses', coursescontroller::class)->except(['create', 'edit', 
 
 //admin/crud -> grades
 Route::resource('grades', gradescontroller::class);
+
+//admin/crud -> messages
+Route::resource('messages', messagescontroller::class);
