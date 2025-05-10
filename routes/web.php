@@ -33,3 +33,7 @@ Route::get('/messages', [messagescontroller::class, 'index'])->name('messages.in
 Route::get('/parentsinfo', [parentsinfocontroller::class, 'index'])->name('parentsinfo.index');
 Route::get('/studentinfo', [studentinfocontroller::class, 'index'])->name('studentinfo.index');
 Route::get('/feedback', [feedbackcontroller::class, 'index'])->name('feedback.index');
+
+//admin/crud -> announcements board
+
+Route::resource('admin/announcements', announcementsController::class)->except(['create', 'edit', 'show']);
