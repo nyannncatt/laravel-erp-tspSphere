@@ -37,3 +37,4 @@ Route::get('/feedback', [feedbackcontroller::class, 'index'])->name('feedback.in
 //admin/crud -> announcements board
 
 Route::resource('admin/announcements', announcementsController::class)->except(['create', 'edit', 'show']);
+Route::resource('attendance', attendancecontroller::class);
