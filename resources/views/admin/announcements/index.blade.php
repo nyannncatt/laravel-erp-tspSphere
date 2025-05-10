@@ -2,12 +2,18 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
-                {{ __('Courses') }}
+                {{ __('Announcements Board') }}
             </h2>
-            <button class="px-6 py-3 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
-                    onclick="document.getElementById('addForm').classList.remove('hidden');">
-                Add New Course
-            </button>
+            <div class="flex space-x-2">
+                <button id="theme-toggle" type="button" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </x-slot>
 
@@ -25,49 +31,44 @@
                 </div>
             @endif
 
-            <!-- Add Course Form -->
-            <div id="addForm" class="hidden">
-                <form method="POST" action="{{ route('courses.store') }}" class="space-y-6">
+            <!-- New Post Card -->
+            <div>
+                <form method="POST" action="{{ route('announcements.store') }}" class="space-y-6">
                     @csrf
                     <div>
-                        <label for="course_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Course Name</label>
-                        <input type="text" id="course_name" name="course_name" placeholder="Enter course name"
+                        <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
+                        <input type="text" id="title" name="title" placeholder="What's this about?" 
                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200">
                     </div>
                     <div>
-                        <label for="instructor" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Instructor</label>
-                        <input type="text" id="instructor" name="instructor" placeholder="Enter instructor's name"
-                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200">
-                    </div>
-                    <div>
-                        <label for="credits" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Credits</label>
-                        <input type="number" id="credits" name="credits" placeholder="Enter credits"
-                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200">
+                        <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Content</label>
+                        <textarea id="content" name="content" rows="4" placeholder="Share your announcement with the community..."
+                                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"></textarea>
                     </div>
                     <div class="flex justify-end">
                         <button type="submit" 
                                 class="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium rounded-lg shadow-md transition duration-200 transform hover:-translate-y-0.5">
-                            Add Course
+                            Post Announcement
                         </button>
                     </div>
                 </form>
             </div>
 
-            <!-- Courses List -->
+            <!-- Announcements List -->
             <div class="mt-8 space-y-8">
-                @foreach ($courses as $course)
+                @foreach ($announcements as $announcement)
                     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl">
                         <div class="p-6 sm:p-8">
                             <div class="flex justify-between items-center mb-4">
                                 <div>
-                                    <h4 class="text-xl font-bold text-gray-900 dark:text-white">Course: {{ $course->course_name }}</h4>
+                                    <h4 class="text-xl font-bold text-gray-900 dark:text-white">{{ $announcement->title }}</h4>
                                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                        Instructor: {{ $course->instructor }} | Credits: {{ $course->credits }}
+                                        Posted {{ $announcement->created_at->diffForHumans() }}
                                     </p>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <!-- Edit Button -->
-                                    <button onclick="document.getElementById('edit-form-{{ $course->id }}').classList.remove('hidden')" 
+                                    <button onclick="toggleEditForm('edit-form-{{ $announcement->id }}')" 
                                             class="p-2 text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 transition duration-200 flex items-center space-x-1"
                                             aria-label="Edit">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,12 +77,12 @@
                                         <span>Edit</span>
                                     </button>
                                     <!-- Delete Button -->
-                                    <form method="POST" action="{{ route('courses.destroy', $course->id) }}" class="flex items-center space-x-1">
+                                    <form method="POST" action="{{ route('announcements.destroy', $announcement->id) }}" class="flex items-center space-x-1">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" 
                                                 class="p-2 text-gray-500 hover:text-red-500 dark:hover:text-red-400 transition duration-200 flex items-center space-x-1"
-                                                onclick="return confirm('Are you sure you want to delete this course?')"
+                                                onclick="return confirm('Are you sure you want to delete this announcement?')"
                                                 aria-label="Delete">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
@@ -91,30 +92,27 @@
                                     </form>
                                 </div>
                             </div>
-
-                            <!-- Edit Form -->
-                            <div id="edit-form-{{ $course->id }}" class="hidden mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                                <form method="POST" action="{{ route('courses.update', $course->id) }}" class="space-y-6">
+                            
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 whitespace-pre-line">{{ $announcement->content }}</p>
+                            
+                            <!-- Edit Form (Hidden by default) -->
+                            <div id="edit-form-{{ $announcement->id }}" class="hidden mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                                <form method="POST" action="{{ route('announcements.update', $announcement->id) }}" class="space-y-6">
                                     @csrf
                                     @method('PUT')
                                     <div>
-                                        <label for="edit-course_name-{{ $course->id }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Course Name</label>
-                                        <input type="text" id="edit-course_name-{{ $course->id }}" name="course_name" value="{{ $course->course_name }}"
+                                        <label for="edit-title-{{ $announcement->id }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
+                                        <input type="text" id="edit-title-{{ $announcement->id }}" name="title" value="{{ $announcement->title }}" 
                                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200">
                                     </div>
                                     <div>
-                                        <label for="edit-instructor-{{ $course->id }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Instructor</label>
-                                        <input type="text" id="edit-instructor-{{ $course->id }}" name="instructor" value="{{ $course->instructor }}"
-                                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200">
-                                    </div>
-                                    <div>
-                                        <label for="edit-credits-{{ $course->id }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Credits</label>
-                                        <input type="number" id="edit-credits-{{ $course->id }}" name="credits" value="{{ $course->credits }}"
-                                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200">
+                                        <label for="edit-content-{{ $announcement->id }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Content</label>
+                                        <textarea id="edit-content-{{ $announcement->id }}" name="content" rows="4"
+                                                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200">{{ $announcement->content }}</textarea>
                                     </div>
                                     <div class="flex justify-end space-x-3">
                                         <button type="button" 
-                                                onclick="document.getElementById('edit-form-{{ $course->id }}').classList.add('hidden')"
+                                                onclick="toggleEditForm('edit-form-{{ $announcement->id }}')"
                                                 class="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
                                             Cancel
                                         </button>
@@ -132,4 +130,36 @@
         </div>
     </div>
 
+    <script>
+        function toggleEditForm(formId) {
+            const form = document.getElementById(formId);
+            form.classList.toggle('hidden');
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            lightIcon.classList.remove('hidden');
+            document.documentElement.classList.add('dark');
+        } else {
+            darkIcon.classList.remove('hidden');
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', function() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+    </script>
 </x-app-layout>

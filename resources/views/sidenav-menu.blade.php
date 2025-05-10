@@ -8,12 +8,12 @@
     <!-- Sidebar -->
     <aside class="w-64 bg-white dark:bg-gray-900 shadow-lg h-screen p-6 border-r border-gray-200 dark:border-gray-700 transition-all duration-300">
         <nav class="space-y-2">
-            <!-- Dashboard -->
-            <a href="{{ route('dashboard') }}"
+            <!-- Announcements Board -->
+            <a href="{{ route('announcements.index') }}"
                class="flex items-center group space-x-4 px-4 py-3 rounded-md hover:bg-blue-50 dark:hover:bg-gray-800 hover:shadow-sm transition-all duration-200 
-               {{ Request::is('dashboard') ? 'active-link' : 'text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400' }}">
-                <i class="fas fa-tachometer-alt text-blue-500 text-xl transform group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium ml-3 group-hover:font-semibold">Dashboard</span>
+               {{ Request::is('announcements*') ? 'active-link' : 'text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400' }}">
+                <i class="fas fa-rss text-blue-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium ml-3 group-hover:font-semibold">Announcements Board</span>
                 <i class="fas fa-chevron-right ml-auto text-xs text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
@@ -21,7 +21,7 @@
             <a href="{{ route('attendance.index') }}"
                class="flex items-center group space-x-4 px-4 py-3 rounded-md hover:bg-green-50 dark:hover:bg-gray-800 hover:shadow-sm transition-all duration-200
                {{ Request::is('attendance*') ? 'active-link' : 'text-gray-800 dark:text-gray-200 hover:text-green-500 dark:hover:text-green-400' }}">
-                <i class="fas fa-calendar-check text-green-500 text-xl transform group-hover:scale-110 transition-transform"></i>
+                <i class="fas fa-calendar-check text-white text-xl transform group-hover:scale-110 transition-transform"></i>
                 <span class="font-medium ml-3 group-hover:font-semibold">Attendance</span>
                 <i class="fas fa-chevron-right ml-auto text-xs text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
             </a>

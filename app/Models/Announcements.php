@@ -1,15 +1,13 @@
 <?php
 
-// app/Models/Messages.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Messages extends Model
+class Announcements extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sender', 'role', 'subject', 'content'];
+    protected $fillable = ['title', 'content'];
 }
