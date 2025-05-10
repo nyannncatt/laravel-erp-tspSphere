@@ -42,3 +42,6 @@ Route::resource('attendance', attendancecontroller::class);
 
 //admin/crud -> courses
 Route::resource('courses', coursescontroller::class)->except(['create', 'edit', 'show']);
+
+//admin/crud -> grades
+Route::resource('grades', gradescontroller::class);
