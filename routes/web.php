@@ -7,7 +7,8 @@ use App\Http\Controllers\messagescontroller;
 use App\Http\Controllers\parentsinfocontroller;
 use App\Http\Controllers\studentinfocontroller;
 use App\Http\Controllers\feedbackcontroller;
-use App\Http\Controllers\feedController;
+use App\Http\Controllers\announcementsController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,7 +25,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/feed', [feedController::class, 'index'])->name('feed.index');
+Route::get('/announcements', [announcementsController::class, 'index'])->name('announcements.index');
 Route::get('/attendance', [attendancecontroller::class, 'index'])->name('attendance.index');
 Route::get('/courses', [coursescontroller::class, 'index'])->name('courses.index');
 Route::get('/grades', [gradescontroller::class, 'index'])->name('grades.index');
