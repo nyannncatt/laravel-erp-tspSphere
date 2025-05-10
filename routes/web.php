@@ -48,3 +48,6 @@ Route::resource('grades', gradescontroller::class);
 
 //admin/crud -> messages
 Route::resource('messages', messagescontroller::class);
+
+//admin/crud -> parentsinfo
+Route::resource('parents', parentsinfocontroller::class);
